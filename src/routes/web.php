@@ -1,4 +1,6 @@
 <?php
 
-Route::get('auth/google', 'Controllers\Auth\LoginController@redirectToProvider');
-Route::get('auth/google/callback', 'Controllers\Auth\LoginController@handleProviderCallback');
+Route::group(['middleware' => ['web']], function () {
+    Route::get('auth/google', 'App\Http\Controllers\Auth\LoginController@redirectToProvider');
+    Route::get('auth/google/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback');
+});
