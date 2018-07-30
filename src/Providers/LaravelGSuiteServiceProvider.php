@@ -28,11 +28,11 @@ class LaravelGSuiteServiceProvider extends ServiceProvider
 
     protected function publishMigrations()
     {
-        if (!class_exists('CreateUsersTable')) {
+        if (!class_exists('AlterUsersTableLaravelGSuite')) {
             $timestamp = date('Y_m_d_His', time());
 
             $this->publishes([
-                __DIR__ . '/../database/migrations/create_users_table.php.stub' => $this->app->databasePath() . "/migrations/{$timestamp}_create_users_table.php",
+                __DIR__ . '/../database/migrations/alter_users_table_laravel_gsuite.php.stub' => $this->app->databasePath() . "/migrations/{$timestamp}_alter_users_table_laravel_gsuite.php",
             ], 'migrations');
         }
     }
