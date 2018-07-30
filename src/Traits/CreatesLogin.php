@@ -51,11 +51,11 @@ trait CreatesLogin
             return $user;
         }
         return $userModel::create([
-            'name' => $user->name,
-            'email' => $user->email,
+            'name' => $socialiteUser->name,
+            'email' => $socialiteUser->email,
             'provider' => $provider,
-            'provider_id' => $user->id,
-            'avatar' => $user->avatar_original,
+            'provider_id' => $socialiteUser->id,
+            'avatar' => $socialiteUser->avatar_original,
         ]);
     }
 }
