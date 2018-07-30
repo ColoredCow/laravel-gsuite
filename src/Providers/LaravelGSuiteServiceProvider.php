@@ -24,6 +24,10 @@ class LaravelGSuiteServiceProvider extends ServiceProvider
     public function register()
     {
         $this->loadRoutesFrom(__DIR__ . '../../routes/web.php');
+        $this->mergeConfigFrom(
+            __DIR__ . '../../config/services.php',
+            'services'
+        );
     }
 
     protected function publishMigrations()
