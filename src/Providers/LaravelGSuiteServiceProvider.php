@@ -13,7 +13,7 @@ class LaravelGSuiteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishMigrations();
+        $this->loadMigrationsFrom(__DIR__ . '../../database/migrations');
     }
 
     /**
@@ -28,16 +28,5 @@ class LaravelGSuiteServiceProvider extends ServiceProvider
             __DIR__ . '../../config/services.php',
             'services'
         );
-    }
-
-    protected function publishMigrations()
-    {
-        if (!class_exists('AlterUsersTableLaravelGSuite')) {
-            $timestamp = date('Y_m_d_His', time());
-
-            $this->publishes([
-                __DIR__ . '/../database/migrations/alter_users_table_laravel_gsuite.php.stub' => $this->app->databasePath() . "/migrations/{$timestamp}_alter_users_table_laravel_gsuite.php",
-            ], 'migrations');
-        }
     }
 }
