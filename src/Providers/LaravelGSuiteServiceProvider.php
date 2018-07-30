@@ -13,7 +13,7 @@ class LaravelGSuiteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__ . '../../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
     /**
@@ -23,9 +23,9 @@ class LaravelGSuiteServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->loadRoutesFrom(__DIR__ . '../../routes/web.php');
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         $this->mergeConfigFrom(
-            __DIR__ . '../../config/services.php',
+            __DIR__ . '/../config/services.php',
             'services'
         );
     }

@@ -29,8 +29,8 @@ class AlterUsersTableLaravelGSuite extends Migration
     public function down()
     {
         Schema::table('users', function(Blueprint $table){
+            $table->string('password')->change();
             $table->dropColumns([
-                'password',
                 'provider',
                 'provider_id',
                 'avatar',
