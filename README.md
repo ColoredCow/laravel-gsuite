@@ -1,5 +1,5 @@
 # Laravel GSuite
-A Laravel package to setup your Google OAuth and GSuite Admin SDK.
+A Laravel package to setup Google OAuth and GSuite Admin SDK.
 
 ## Installation
 You can install the package using composer

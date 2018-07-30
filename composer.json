@@ -1,6 +1,6 @@
 {
     "name": "coloredcow/laravel-gsuite",
-    "description": "Boilerplate for Google OAuth and GSuite APIs for a Laravel project",
+    "description": "A Laravel package to setup Google OAuth and GSuite Admin SDK",
     "keywords": ["coloredcow", "gsuite", "socialite", "laravel"],
     "homepage": "https://github.com/coloredcow/laravel-gsuite",
     "license": "MIT",
