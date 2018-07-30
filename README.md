@@ -3,12 +3,12 @@ A Laravel package to setup your Google OAuth and GSuite Admin SDK.
 
 ## Installation steps
 Download the repository from your command line
-```console
+```sh
 $ composer require coloredcow/laravel-gsuite
 ```
 
 Run the migrations
-```console
+```sh
 $ php artisan migrate
 ```
 
@@ -26,7 +26,6 @@ GOOGLE_CLIENT_HD=your_domain
 
 Inside your `app/Http/Controllers/Auth/LoginController.php`, use the package trait `CreatesLogin`
 ```php
-
 <?php
 
 use ColoredCow\LaravelGSuite\Traits\CreatesLogin;
