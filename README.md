@@ -1,15 +1,15 @@
 # Laravel GSuite
 A Laravel package to setup your Google OAuth and GSuite Admin SDK.
 
-## Installation steps
-Download the repository from your command line
-```sh
-$ composer require coloredcow/laravel-gsuite
+## Installation
+You can install the package using composer
+```
+composer require coloredcow/laravel-gsuite
 ```
 
 Run the migrations
-```sh
-$ php artisan migrate
+```
+php artisan migrate
 ```
 
 Update your .env file with the Google OAuth 2.0 credentials
