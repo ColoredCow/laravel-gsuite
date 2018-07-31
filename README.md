@@ -12,6 +12,7 @@ Run the migrations
 php artisan migrate
 ```
 
+### Setting up Google Oauth
 Update your .env file with the Google OAuth 2.0 credentials
 ```
 GOOGLE_CLIENT_ID=your_google_client_id
@@ -38,4 +39,19 @@ use AuthenticatesUsers, CreatesLogin;
 ...
 ```
 
-That's it! Go to `your_app_url/auth/google` and use your Google email to login.
+Now, go to `your_app_url/auth/google` and use your Google email to login.
+
+### Setting up GSuite Admin SDK
+Run the following command to publish the gsuite configuration file
+```
+php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\LaravelGSuiteServiceProvider" --tag="config"
+```
+
+In your `.env` file, add the following credentials:
+```
+GOOGLE_APPLICATION_CREDENTIALS=your_gsuite_service_account_crendentials
+GOOGLE_SERVICE_ACCOUNT_IMPERSONATE=your_gsuite_admin_email
+```
+To know more about service account and steps to get one, visit [the official Google Documentation](https://developers.google.com/identity/protocols/OAuth2ServiceAccount).
+
+**NOTE:** Make sure you enable `Domain-wide Delegation` when creating the service account for your project.
