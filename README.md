@@ -12,6 +12,11 @@ Run the migrations
 php artisan migrate
 ```
 
+Publish the configurations with
+```
+php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\LaravelGSuiteServiceProvider"
+```
+
 Update your .env file with the Google OAuth 2.0 credentials
 ```
 GOOGLE_CLIENT_ID=your_google_client_id
