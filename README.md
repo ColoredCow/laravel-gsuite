@@ -24,17 +24,19 @@ GOOGLE_CLIENT_CALLBACK=your_google_callback_url
 GOOGLE_CLIENT_HD=your_domain
 ```
 
-Inside your `app/Http/Controllers/Auth/LoginController.php`, use the package trait `CreatesLogin`
+Inside your `app/Http/Controllers/Auth/LoginController.php`, use the package trait `LaravelGSuiteLogin`
 ```php
 <?php
 
-use ColoredCow\LaravelGSuite\Traits\CreatesLogin;
+use ColoredCow\LaravelGSuite\Traits\LaravelGSuiteLogin;
 
 class LoginController extends Controller
 {
+
 ...
 
-use AuthenticatesUsers, CreatesLogin;
+use AuthenticatesUsers, LaravelGSuiteLogin;
+
 ...
 ```
 
