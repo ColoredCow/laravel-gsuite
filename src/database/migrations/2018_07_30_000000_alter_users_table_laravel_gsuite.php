@@ -14,7 +14,7 @@ class AlterUsersTableLaravelGSuite extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('avatar')->nullable();
+            $table->text(config('laravel-gsuite.tables.users.avatar'))->nullable();
         });
     }
 
