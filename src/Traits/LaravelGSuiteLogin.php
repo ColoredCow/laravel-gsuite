@@ -56,16 +56,15 @@ trait LaravelGSuiteLogin
     {
         $userModel = config('auth.providers.users.model');
 
-        $user = $userModel::where('provider_id', $socialiteUser->id)->first();
+        $user = $userModel::where('email', $socialiteUser->email)->first();
         if ($user) {
             return $user;
         }
         return $userModel::create([
             'name' => $socialiteUser->name,
             'email' => $socialiteUser->email,
-            'provider' => $provider,
-            'provider_id' => $socialiteUser->id,
-            'avatar' => $socialiteUser->avatar_original,
+            'password' => str_random(12),
+            config('laravel-gsuite.database.user-columns.avatar') => $socialiteUser->avatar_original,
         ]);
     }
 }

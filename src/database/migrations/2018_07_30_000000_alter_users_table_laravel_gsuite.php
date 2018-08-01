@@ -14,9 +14,6 @@ class AlterUsersTableLaravelGSuite extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('password')->nullable()->change();
-            $table->string('provider')->nullable();
-            $table->string('provider_id')->nullable();
             $table->text('avatar')->nullable();
         });
     }
@@ -29,12 +26,7 @@ class AlterUsersTableLaravelGSuite extends Migration
     public function down()
     {
         Schema::table('users', function(Blueprint $table){
-            $table->string('password')->change();
-            $table->dropColumns([
-                'provider',
-                'provider_id',
-                'avatar',
-            ]);
+            $table->dropColumns(['avatar']);
         });
     }
 }
