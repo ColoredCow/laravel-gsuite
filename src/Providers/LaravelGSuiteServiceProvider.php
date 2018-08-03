@@ -15,7 +15,7 @@ class LaravelGSuiteServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->publishes([
-            __DIR__ . '/../config/gsuite.php' => config_path('gsuite.php'),
+            __DIR__ . '/../config/laravel-gsuite.php' => config_path('laravel-gsuite.php'),
         ], 'config');
     }
 

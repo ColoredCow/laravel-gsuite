@@ -7,6 +7,26 @@ You can install the package using composer
 composer require coloredcow/laravel-gsuite
 ```
 
+Publish the configurations
+```
+php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\LaravelGSuiteServiceProvider"
+```
+
+Update the mass-assignable property `$fillable` in your User Model and append the array with the `avatar`. This field will store the user avatar that is fetched from google. Your property should look something like
+```php
+    /**
+    * The attributes that are mass assignable.
+    *
+    * @var array
+    */
+    protected $fillable = [
+        'name', 'email', 'password', 'avatar'
+    ];
+```
+**NOTE:** If you have `$guarded` property instead of `$fillable`, no need to do the above step.
+
+**NOTE:** In case you prefer to have a different name for avatar, you can update it's value from `config/laravel-gsuite.php`.
+
 Run the migrations
 ```
 php artisan migrate
@@ -25,28 +45,25 @@ GOOGLE_CLIENT_CALLBACK=your_google_callback_url
 GOOGLE_CLIENT_HD=your_domain
 ```
 
-Inside your `app/Http/Controllers/Auth/LoginController.php`, use the package trait `CreatesLogin`
+Inside your `app/Http/Controllers/Auth/LoginController.php`, use the package trait `LaravelGSuiteLogin`
 ```php
 <?php
 
-use ColoredCow\LaravelGSuite\Traits\CreatesLogin;
+use ColoredCow\LaravelGSuite\Traits\LaravelGSuiteLogin;
 
 class LoginController extends Controller
 {
+
 ...
 
-use AuthenticatesUsers, CreatesLogin;
+use AuthenticatesUsers, LaravelGSuiteLogin;
+
 ...
 ```
 
-Now, go to `your_app_url/auth/google` and use your Google email to login.
+That's it! Go to `your_app_url/auth/google` and use your Google email to login.
 
 ### Setting up GSuite Admin SDK
-Run the following command to publish the gsuite configuration file
-```
-php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\LaravelGSuiteServiceProvider" --tag="config"
-```
-
 In your `.env` file, add the following credentials:
 ```
 GOOGLE_APPLICATION_CREDENTIALS=your_gsuite_service_account_crendentials
