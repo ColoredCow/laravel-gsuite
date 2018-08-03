@@ -9,27 +9,7 @@ composer require coloredcow/laravel-gsuite
 
 Publish the configurations
 ```
-php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\LaravelGSuiteServiceProvider"
-```
-
-Update the mass-assignable property `$fillable` in your User Model and append the array with the `avatar`. This field will store the user avatar that is fetched from google. Your property should look something like
-```php
-    /**
-    * The attributes that are mass assignable.
-    *
-    * @var array
-    */
-    protected $fillable = [
-        'name', 'email', 'password', 'avatar'
-    ];
-```
-**NOTE:** If you have `$guarded` property instead of `$fillable`, no need to do the above step.
-
-**NOTE:** In case you prefer to have a different name for avatar, you can update it's value from `config/laravel-gsuite.php`.
-
-Run the migrations
-```
-php artisan migrate
+php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\GSuiteServiceProvider"
 ```
 
 ### Setting up Google Oauth
@@ -45,18 +25,18 @@ GOOGLE_CLIENT_CALLBACK=your_google_callback_url
 GOOGLE_CLIENT_HD=your_domain
 ```
 
-Inside your `app/Http/Controllers/Auth/LoginController.php`, use the package trait `LaravelGSuiteLogin`
+Inside your `app/Http/Controllers/Auth/LoginController.php`, use the package trait `GSuiteLogin`
 ```php
 <?php
 
-use ColoredCow\LaravelGSuite\Traits\LaravelGSuiteLogin;
+use ColoredCow\LaravelGSuite\Traits\GSuiteLogin;
 
 class LoginController extends Controller
 {
 
 ...
 
-use AuthenticatesUsers, LaravelGSuiteLogin;
+use AuthenticatesUsers, GSuiteLogin;
 
 ...
 ```

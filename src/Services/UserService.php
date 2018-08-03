@@ -3,14 +3,9 @@
 namespace ColoredCow\LaravelGSuite\Services;
 
 use Carbon\Carbon;
-use Google_Client;
-use Google_IO_Exception;
 use Google_Service_Directory;
-use Google_Service_Directory_User;
-use Google_Service_Directory_UserName;
-use Google_Service_Exception;
 
-class UserService
+class UserService extends Service
 {
 	protected $name;
 	protected $joinedOn;
@@ -19,21 +14,14 @@ class UserService
 
 	public function __construct()
 	{
-		$client = new Google_Client();
-		$client->useApplicationDefaultCredentials();
-		if (config('laravel-gsuite.multitenancy')) {
-			$impersonate = config('laravel-gsuite.service-account-impersonate');
-		} else {
-			$impersonate = config('laravel-gsuite.service-account-impersonate');
-		}
-		$client->setSubject($impersonate);
+		parent::__construct();
 
-		$client->addScope([
+		$this->client->addScope([
 			Google_Service_Directory::ADMIN_DIRECTORY_USER,
 			Google_Service_Directory::ADMIN_DIRECTORY_USER_READONLY,
 		]);
 
-		$this->service = new Google_Service_Directory($client);
+		$this->service = new Google_Service_Directory($this->client);
 	}
 
 	public function fetch($email)

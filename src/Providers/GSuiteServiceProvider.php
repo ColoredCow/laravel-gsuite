@@ -4,7 +4,7 @@ namespace ColoredCow\LaravelGSuite\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelGSuiteServiceProvider extends ServiceProvider
+class GSuiteServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
@@ -13,9 +13,8 @@ class LaravelGSuiteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         $this->publishes([
-            __DIR__ . '/../config/laravel-gsuite.php' => config_path('laravel-gsuite.php'),
+            __DIR__ . '/../config/gsuite.php' => config_path('gsuite.php'),
         ], 'config');
     }
 

@@ -1,17 +1,6 @@
 <?php
 
 return [
-	'tables' => [
-		'users' => [
-			/**
-			 * When storing a user avatar, we need to know what column in the users table should
-			 * capture it. The default column name is "avatar" but you may easily change
-			 * it to anything you prefer.
-			 */
-			'avatar' => 'avatar',
-		]
-	],
-
 	/**
 	 * When using the GSuite API services, we need to know the application
 	 * credentials for your domain. This is basically the service account

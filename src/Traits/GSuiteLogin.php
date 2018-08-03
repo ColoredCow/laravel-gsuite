@@ -5,7 +5,7 @@ namespace ColoredCow\LaravelGSuite\Traits;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
-trait CreatesLogin
+trait GSuiteLogin
 {
     protected $redirectTo = '/home';
 
@@ -31,6 +31,16 @@ trait CreatesLogin
         $socialiteUser = Socialite::driver('google')->user();
         $user = $this->findOrCreateUser($socialiteUser, 'google');
         Auth::login($user, true);
+        return $this->afterHandleProvider();
+    }
+
+    /**
+     * Defines actions to perform after handleProviderCallback is executed.
+     *
+     * @return \Illuminate\Http\Response\Redirect;
+     */
+    public function afterHandleProvider()
+    {
         return redirect($this->redirectTo);
     }
 
@@ -46,16 +56,15 @@ trait CreatesLogin
     {
         $userModel = config('auth.providers.users.model');
 
-        $user = $userModel::where('provider_id', $socialiteUser->id)->first();
+        $user = $userModel::where('email', $socialiteUser->email)->first();
         if ($user) {
             return $user;
         }
         return $userModel::create([
             'name' => $socialiteUser->name,
             'email' => $socialiteUser->email,
-            'provider' => $provider,
-            'provider_id' => $socialiteUser->id,
-            'avatar' => $socialiteUser->avatar_original,
+            'password' => str_random(12),
+            config('laravel-gsuite.tables.users.avatar') => $socialiteUser->avatar_original,
         ]);
     }
 }
