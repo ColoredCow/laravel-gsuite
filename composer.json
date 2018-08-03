@@ -1,0 +1,44 @@
+{
+    "name": "coloredcow/laravel-gsuite",
+    "description": "A Laravel package to setup Google OAuth and GSuite Admin SDK",
+    "keywords": ["coloredcow", "gsuite", "socialite", "laravel"],
+    "homepage": "https://github.com/coloredcow/laravel-gsuite",
+    "license": "MIT",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/ColoredCow/google-api-php-client"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ColoredCow/google-auth-library-php"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "laravel/socialite": "^3.0",
+        "google/auth": "^1.3",
+        "google/apiclient": "^2.2",
+        "doctrine/dbal": "^2.8"
+    },
+    "authors": [
+        {
+            "name": "ColoredCow",
+            "email": "laravel@coloredcow.in",
+            "homepage": "https://coloredcow.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ColoredCow\\LaravelGSuite\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ColoredCow\\LaravelGSuite\\Providers\\LaravelGSuiteServiceProvider"
+            ]
+        }
+    }
+}
