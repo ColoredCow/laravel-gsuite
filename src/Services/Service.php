@@ -12,10 +12,10 @@ abstract class Service
 	{
 		$this->client = new Google_Client();
 		$this->client->useApplicationDefaultCredentials();
-		if (config('laravel-gsuite.multitenancy')) {
-			$impersonateUser = config('laravel-gsuite.service-account-impersonate');
+		if (config('gsuite.multitenancy')) {
+			$impersonateUser = config('gsuite.service-account-impersonate');
 		} else {
-			$impersonateUser = config('laravel-gsuite.service-account-impersonate');
+			$impersonateUser = config('gsuite.service-account-impersonate');
 		}
 		$this->client->setSubject($impersonateUser);
 	}

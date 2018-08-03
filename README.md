@@ -43,7 +43,7 @@ use AuthenticatesUsers, GSuiteLogin;
 
 That's it! Go to `your_app_url/auth/google` and use your Google email to login.
 
-### Setting up GSuite Admin SDK
+### Setting up GSuite Admin Service
 In your `.env` file, add the following credentials:
 ```
 GOOGLE_APPLICATION_CREDENTIALS=your_gsuite_service_account_crendentials

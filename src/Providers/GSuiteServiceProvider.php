@@ -3,6 +3,7 @@
 namespace ColoredCow\LaravelGSuite\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use ColoredCow\LaravelGSuite\Services\UserService;
 
 class GSuiteServiceProvider extends ServiceProvider
 {
@@ -30,5 +31,9 @@ class GSuiteServiceProvider extends ServiceProvider
             __DIR__ . '/../config/services.php',
             'services'
         );
+
+        $this->app->bind(UserService::class, function () {
+            return new UserService;
+        });
     }
 }

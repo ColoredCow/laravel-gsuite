@@ -34,7 +34,7 @@ class UserService extends Service
 			$designation = $userOrganizations[0]['title'];
 		}
 		$this->setName($user->getName()->fullName);
-		$this->setJoinedOn(Carbon::parse($user->getCreationTime())->format(config('constants.date_format')));
+		$this->setJoinedOn(Carbon::parse($user->getCreationTime())->format('Y-m-d H:i:s'));
 		$this->setDesignation($designation);
 	}
 
