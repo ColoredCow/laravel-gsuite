@@ -92,10 +92,11 @@ Now, create your tenant databases.
 In every tenant database, you need to define the application credentials and service account impersonate user. You can add a seeder to your multitenancy implementation so that it runs everytime a new tenant database is created.
 
 Your `gsuite_configurations` table should look this
+
 |id|key|value|created_at|updated_at|
 |-|-|-|-|-|
 |1|application_credentials|full_path_to_credentials.json|2018-06-06 16:00:00|2018-06-06 16:00:00|
-|2|application_credentials|admin@mycompany.com|2018-06-06 16:00:00|2018-06-06 16:00:00|
+|2|service_account_impersonate|`admin@mycompany.com`|2018-06-06 16:00:00|2018-06-06 16:00:00|
 
 ### More multitenancy configurations
 If you prefer to have a different name for the `gsuite_configurations` table, update `config/gsuite.php`
