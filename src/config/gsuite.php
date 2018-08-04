@@ -22,6 +22,12 @@ return [
 	 */
 	'multitenancy' => false,
 
+	'models' => [
+		'tenant' => [
+			'gsuite-configurations' => ColoredCow\LaravelGSuite\Models\GSuiteConfiguration::class,
+		]
+	],
+
 	'tables' => [
 		'tenant' => [
 			'gsuite-configurations' => [
