@@ -36,6 +36,8 @@ class UserService extends Service
 		$this->setName($user->getName()->fullName);
 		$this->setJoinedOn(Carbon::parse($user->getCreationTime())->format('Y-m-d H:i:s'));
 		$this->setDesignation($designation);
+
+		return $this;
 	}
 
 	public function setJoinedOn($joinedOn)

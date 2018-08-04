@@ -34,11 +34,9 @@ use ColoredCow\LaravelGSuite\Traits\GSuiteLogin;
 class LoginController extends Controller
 {
 
-...
+    use AuthenticatesUsers, GSuiteLogin;
 
-use AuthenticatesUsers, GSuiteLogin;
-
-...
+    // ...
 ```
 
 That's it! Go to `your_app_url/auth/google` and use your Google email to login.
@@ -52,6 +50,19 @@ GOOGLE_SERVICE_ACCOUNT_IMPERSONATE=your_gsuite_admin_email
 To know more about service account and steps to get one, visit [the official Google Documentation](https://developers.google.com/identity/protocols/OAuth2ServiceAccount).
 
 **NOTE:** Make sure you enable `Domain-wide Delegation` when creating the service account for your project.
+
+You can now use various services provided by the package. For example, if you want to fetch a user details, you can use the `GSuiteUserService` facade.
+```php
+use ColoredCow\LaravelGSuite\Facades\GSuiteUserService;
+
+// ...
+
+$user = GSuiteUserService::fetch('jon@mycompany.com');
+
+echo $user->getName(); // Jon Snow
+echo $user->getJoinedOn(); // 2016-12-26 12:15:00
+echo $user->getDesignation(); // Lord Commander
+```
 
 ## Enabling multitenancy
 There are some additional steps required in case your application supports multitenancy.
