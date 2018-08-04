@@ -58,12 +58,7 @@ There are some additional steps required in case your application supports multi
 
 Set multitenancy to **true** in your `config/gsuite.php`
 ```php
-<?php
-...
-
 'multitenancy' => true,
-
-...
 ```
 
 Since you'll have multiple tenants, and you may need different GSuite API credentials for each of them, the package will store the credentials in a table and will fetch from the table itself instead of reading from the `.env` file.
