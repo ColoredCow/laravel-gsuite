@@ -91,10 +91,32 @@ A sample output would be:
 ```php
 [
     'id' => 20,
-    'tenant_id' => 20,
+    'tenant_id' => 20, // the column name may change based on values set in config/gsuite.php
     'application_credentials' => '2018/04/tenant-credentials.json',
     'service_account_impersonate' => 'admin@tenant.com',
     'created_at' => '2018-08-04 16:00:00',
     'modified_at' => '2018-08-04 16:00:00'
+]
+```
+### More multitenancy configurations
+If you prefer to have a different name for the `gsuite_configurations` table and maybe for the `tenant_id` column in the table, you can configure these values in `config/gsuite.php`
+```php
+'tables' => [
+    'tenant' => [
+        'gsuite-configurations' => [
+            'name' => 'your_table_name',
+            'columns' => [
+                'tenant-id' => 'your_column_name'
+            ]
+        ]
+    ]
+]
+```
+If you prefer to override the package's `GSuiteConfiguration` model, you can create a custom model that must extend the `ColoredCow\LaravelGSuite\Models\GSuiteConfiguration` model. Then, update your `config/gsuite.php` and replace the default model with the new model.
+```php
+'models' => [
+    'tenant' => [
+        'gsuite-configurations' => App\YourModelName::class
+    ]
 ]
 ```
