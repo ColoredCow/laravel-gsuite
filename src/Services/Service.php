@@ -13,7 +13,8 @@ abstract class Service
 		$this->client = new Google_Client();
 		$this->client->useApplicationDefaultCredentials();
 		if (config('gsuite.multitenancy')) {
-			$impersonateUser = config('gsuite.service-account-impersonate');
+			$gsuiteConfigurations = app(config('gsuite.models.tenant.gsuite-configurations'));
+			$impersonateUser = $gsuiteConfigurations->getServiceAccountImpersonate();
 		} else {
 			$impersonateUser = config('gsuite.service-account-impersonate');
 		}

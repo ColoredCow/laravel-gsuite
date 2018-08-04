@@ -22,7 +22,7 @@ class GSuiteServiceProvider extends ServiceProvider
             $timestamp = date('Y_m_d_His', time());
 
             $this->publishes([
-                __DIR__ . '/../database/migrations/create_g_suite_configurations_table.php.stub' => $this->app->databasePath() . "/migrations/{$timestamp}_create_g_suite_configurations_table.php",
+                __DIR__ . '/../database/migrations/tenant/create_g_suite_configurations_table.php.stub' => $this->app->databasePath() . "/migrations/tenant/{$timestamp}_create_g_suite_configurations_table.php",
             ], 'multitenancy');
         }
     }

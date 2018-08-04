@@ -24,6 +24,14 @@ return [
 
 	'models' => [
 		'tenant' => [
+			/**
+			 * When retrieving gsuite configurations for a tenant, we need to know which
+			 * Eloquent model we should use. You can override the default functionality
+			 * by creating your own Eloquent model that deals with storing the
+			 * gsuite configurations.
+			 *
+			 * Your custom model must implement the \ColoredCow\LaravelGSuite\Contracts\GSuiteConfiguration
+			 */
 			'gsuite-configurations' => ColoredCow\LaravelGSuite\Models\GSuiteConfiguration::class,
 		]
 	],
@@ -32,8 +40,9 @@ return [
 		'tenant' => [
 			'gsuite-configurations' => [
 				'name' => 'gsuite_configurations',
-				'columns' => [
-					'tenant-id' => 'tenant_id',
+				'keys' => [
+					'application-credentials' => 'application_credentials',
+					'service-account-impersonate' => 'service_account_impersonate',
 				]
 			]
 		]
