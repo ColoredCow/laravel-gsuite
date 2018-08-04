@@ -16,11 +16,11 @@ class GSuiteConfiguration extends Model implements GSuiteConfigurationContract
 
 	public function getApplicationCredentials()
 	{
-		return self::where('key', config('gsuite.tables.tenant.gsuite-configurations.keys.application-credentials'));
+		return self::where('key', config('gsuite.tables.tenant.gsuite-configurations.keys.application-credentials'))->first();
 	}
 
 	public function getServiceAccountImpersonate()
 	{
-		return self::where('key', config('gsuite.tables.tenant.gsuite-configurations.keys.service-account-impersonate'));
+		return self::where('key', config('gsuite.tables.tenant.gsuite-configurations.keys.service-account-impersonate'))->first();
 	}
 }
