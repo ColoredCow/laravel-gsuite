@@ -61,57 +61,36 @@ Set multitenancy to **true** in your `config/gsuite.php`
 'multitenancy' => true,
 ```
 
-Since you'll have multiple tenants, and you may need different GSuite API credentials for each of them, the package will store the credentials in a table and will fetch from the table itself instead of reading from the `.env` file.
-For this, you need to publish the multitenancy migrations
-```
-php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\GSuiteServiceProvider" --tag="multitenancy"
-```
-
-Next, add the `ColoredCow\LaravelGSuite\Traits\HasGSuiteConfigurations` trait in your tenant model
+The default value for tenant connection is `tenant`. If you're using a different name for tenant connection, update `config/gsuite.php`
 ```php
-use ColoredCow\LaravelGSuite\Traits\HasGSuiteConfigurations;
-
-class Tenant extends Model
-{
-    use HasGSuiteConfigurations;
-
-    // ...
-```
-
-You will be now able to map your tenant and it's GSuite configurations. For example, if you have a tenant instance, you can create/update/delete the gsuite configurations using:
-```php
-$tenant->gsuiteConfigurations;
-```
-A sample output would be:
-```php
-[
-    'id' => 20,
-    'tenant_id' => 20, // the column name may change based on values set in config/gsuite.php
-    'application_credentials' => '2018/04/tenant-credentials.json',
-    'service_account_impersonate' => 'admin@tenant.com',
-    'created_at' => '2018-08-04 16:00:00',
-    'modified_at' => '2018-08-04 16:00:00'
+'connections' => [
+    'tenant' => 'tenant_connection',
 ]
 ```
+
+Since you'll have multiple tenants, and you may need different GSuite API credentials for each of them, the package will create a table in each tenant database. This table will store the required gsuite credentials.
+Publish the multitenancy migrations and then run the migrations
+```
+php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\GSuiteServiceProvider" --tag="multitenancy"
+php artisan migrate
+```
+**NOTE:** If you already have existing tenants, you may need to recreate tenant databases. You may lose some data if not done carefully.
+
 ### More multitenancy configurations
-If you prefer to have a different name for the `gsuite_configurations` table and maybe for the `tenant_id` column in the table, you can configure these values in `config/gsuite.php`
+If you prefer to have a different name for the `gsuite_configurations` table, update `config/gsuite.php`
 ```php
 'tables' => [
     'tenant' => [
-        'gsuite-configurations' => [
-            'name' => 'your_table_name',
-            'columns' => [
-                'tenant-id' => 'your_column_name'
-            ]
-        ]
+        'gsuite-configurations' => 'your_gsuite_table_name',
     ]
 ]
 ```
-If you prefer to override the package's `GSuiteConfiguration` model, you can create a custom model that must extend the `ColoredCow\LaravelGSuite\Models\GSuiteConfiguration` model. Then, update your `config/gsuite.php` and replace the default model with the new model.
+
+If you prefer to override the package's `GSuiteConfiguration` model, create a custom model that must implement the `ColoredCow\LaravelGSuite\Contracts\Tenant\GSuiteConfiguration` contract. Then, update your `config/gsuite.php` and replace the default model with the new model.
 ```php
 'models' => [
     'tenant' => [
-        'gsuite-configurations' => App\YourModelName::class
+        'gsuite-configuration' => App\YourModelName::class
     ]
 ]
 ```

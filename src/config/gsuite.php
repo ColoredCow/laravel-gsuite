@@ -30,7 +30,7 @@ return [
 			 *
 			 * Your custom model must implement the \ColoredCow\LaravelGSuite\Contracts\GSuiteConfiguration
 			 */
-			'gsuite-configurations' => ColoredCow\LaravelGSuite\Models\Tenant\GSuiteConfiguration::class,
+			'gsuite-configuration' => ColoredCow\LaravelGSuite\Models\Tenant\GSuiteConfiguration::class,
 		]
 	],
 
