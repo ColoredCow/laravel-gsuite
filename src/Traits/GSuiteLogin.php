@@ -3,6 +3,7 @@
 namespace ColoredCow\LaravelGSuite\Traits;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 
 trait GSuiteLogin
@@ -63,7 +64,7 @@ trait GSuiteLogin
         return $userModel::create([
             'name' => $socialiteUser->name,
             'email' => $socialiteUser->email,
-            'password' => str_random(12),
+            'password' => Hash::make(str_random(12)),
         ]);
     }
 }

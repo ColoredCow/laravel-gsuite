@@ -11,7 +11,7 @@ class GSuiteConfiguration extends Model implements GSuiteConfigurationContract
 
 	public function __construct()
 	{
-		$this->setTable(config('gsuite.tables.tenant.gsuite-configuration'));
+		$this->setTable(config('gsuite.tables.tenant.gsuite-configurations'));
 		$this->setConnection(config('gsuite.connections.tenant'));
 	}
 
