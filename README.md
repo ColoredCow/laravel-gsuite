@@ -9,7 +9,7 @@ composer require coloredcow/laravel-gsuite
 
 Publish the configurations
 ```
-php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\GSuiteServiceProvider"
+php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\GSuiteServiceProvider" --tag="config"
 ```
 
 ### Setting up Google Oauth

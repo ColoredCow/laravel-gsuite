@@ -21,4 +21,15 @@ return [
 	 * and service-account-impersonate values from the tenant databases.
 	 */
 	'multitenancy' => false,
+
+	'tables' => [
+		'tenant' => [
+			'gsuite-configurations' => [
+				'name' => 'gsuite_configurations',
+				'columns' => [
+					'tenant-id' => 'tenant_id',
+				]
+			]
+		]
+	],
 ];
