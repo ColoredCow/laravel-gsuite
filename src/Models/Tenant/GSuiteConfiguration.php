@@ -3,7 +3,7 @@
 namespace ColoredCow\LaravelGSuite\Models\Tenant;
 
 use Illuminate\Database\Eloquent\Model;
-use ColoredCow\LaravelGSuite\Contracts\GSuiteConfiguration as GSuiteConfigurationContract;
+use ColoredCow\LaravelGSuite\Contracts\Tenant\GSuiteConfiguration as GSuiteConfigurationContract;
 
 class GSuiteConfiguration extends Model implements GSuiteConfigurationContract
 {
@@ -11,16 +11,22 @@ class GSuiteConfiguration extends Model implements GSuiteConfigurationContract
 
 	public function __construct()
 	{
-		$this->setTable(config('gsuite.tables.tenant.gsuite-configurations.name'));
+		$this->setTable(config('gsuite.tables.tenant.gsuite-configurations'));
+		$this->setConnection(config('gsuite.connections.tenant'));
 	}
 
-	public function getApplicationCredentials()
+	public function getApplicationCredentials(): string
 	{
-		return self::where('key', config('gsuite.tables.tenant.gsuite-configurations.keys.application-credentials'))->first();
+		return $this->getByKey(config('gsuite.keys.tenant.application-credentials'));
 	}
 
-	public function getServiceAccountImpersonate()
+	public function getServiceAccountImpersonate(): string
 	{
-		return self::where('key', config('gsuite.tables.tenant.gsuite-configurations.keys.service-account-impersonate'))->first();
+		return $this->getByKey(config('gsuite.keys.tenant.service-account-impersonate'));
+	}
+
+	public function getByKey(string $key): string
+	{
+		return self::where('key', $key)->first()->value;
 	}
 }

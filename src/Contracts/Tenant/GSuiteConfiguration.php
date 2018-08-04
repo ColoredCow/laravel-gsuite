@@ -17,4 +17,12 @@ interface GSuiteConfiguration
 	 * @return string
 	 */
 	public function getServiceAccountImpersonate(): string;
+
+	/**
+	 * Retrieve a gsuite configuration by its key.
+	 *
+	 * @param string $key
+	 * @return string
+	 */
+	public function getByKey(string $key): string;
 }

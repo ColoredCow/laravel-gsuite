@@ -6,6 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateGSuiteConfigurationsTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -13,7 +14,7 @@ class CreateGSuiteConfigurationsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('gsuite.tables.tenant.gsuite-configurations.name'), function (Blueprint $table) {
+        Schema::create(config('gsuite.tables.tenant.gsuite-configurations'), function (Blueprint $table) {
             $table->increments('id');
 			$table->string('key');
             $table->string('value');
@@ -28,6 +29,6 @@ class CreateGSuiteConfigurationsTable extends Migration
      */
     public function down()
     {
-        Schema::drop(config('gsuite.tables.tenant.gsuite-configurations.name'));
+        Schema::drop(config('gsuite.tables.tenant.gsuite-configurations'));
     }
 }
