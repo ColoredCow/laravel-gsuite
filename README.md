@@ -80,12 +80,14 @@ The default value for tenant connection is `tenant`. If you're using a different
 ```
 
 Since you'll have multiple tenants, and you may need different GSuite API credentials for each of them, the package will create a table in each tenant database. This table will store the required gsuite credentials.
-Publish the multitenancy migrations and then run the migrations
+
+Publish the tenant specific migrations using the following command. This will publish the migrations into `database/migrations/tenant` directory.
 ```
 php artisan vendor:publish --provider="ColoredCow\LaravelGSuite\Providers\GSuiteServiceProvider" --tag="multitenancy"
-php artisan migrate
 ```
-**NOTE:** If you already have existing tenants, you may need to recreate tenant databases. You may lose some data if not done carefully.
+Now, create your tenant databases.
+
+**NOTE:** If you already have existing tenants, you may need to recreate those tenant databases. You may lose some data if not done carefully.
 
 ### More multitenancy configurations
 If you prefer to have a different name for the `gsuite_configurations` table, update `config/gsuite.php`
