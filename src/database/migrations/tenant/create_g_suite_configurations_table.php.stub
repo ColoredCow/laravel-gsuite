@@ -15,8 +15,8 @@ class CreateGSuiteConfigurationsTable extends Migration
     {
         Schema::create(config('gsuite.tables.tenant.gsuite-configurations.name'), function (Blueprint $table) {
             $table->increments('id');
-			$table->unsignedInteger(config('gsuite.tables.tenant.gsuite-configurations.columns.tenant-id));
-			$table->string('application_credentials')
+			$table->unsignedInteger(config('gsuite.tables.tenant.gsuite-configurations.columns.tenant-id'));
+			$table->string('application_credentials');
             $table->string('service_account_impersonate');
             $table->timestamps();
         });
