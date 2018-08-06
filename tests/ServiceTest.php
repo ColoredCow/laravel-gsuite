@@ -7,11 +7,28 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 
 class ServiceTest extends TestCase
 {
+    protected $service;
+
+    public function setUp() {
+        parent::setUp();
+        $this->service = $this->getMockForAbstractClass(Service::class);
+    }
 
 	/** @test */
 	public function a_stand_alone_service_can_not_be_initialize()
 	{
         $this->expectException(BindingResolutionException::class);
         $serviceClass = app(Service::class);
+    }
+
+    /** @test */
+	public function it_will_have_a_initialize_google_client()
+	{
+        $this->assertInstanceOf(\Google_Client::class, $this->service->getClient());
+    }
+
+    /** @test */
+    public function it_will_have_desired_service() {
+        $this->assertInstanceOf(\Google_Service_Directory::class, $this->service->service);
     }
 }

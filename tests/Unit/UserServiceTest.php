@@ -16,20 +16,10 @@ class UserServiceTest extends TestCase
         $this->service = app(UserService::class);
     }
 
-	/** @test */
-	public function it_will_have_a_initialize_google_client()
-	{
-        $this->assertInstanceOf(\Google_Client::class, $this->service->getClient());
-    }
-
     /** @test */
     public function client_will_have_desired_scopes() {
         $client = $this->service->getClient();
         $this->assertEquals($client->getScopes(), $this->service->getSpecificScopes());
     }
-
-    /** @test */
-    public function it_will_have_desired_service() {
-        $this->assertInstanceOf(\Google_Service_Directory::class, $this->service->service);
-    }
+    
 }
