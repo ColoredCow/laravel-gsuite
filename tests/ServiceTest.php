@@ -7,10 +7,11 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 
 class ServiceTest extends TestCase
 {
+
 	/** @test */
-	public function a_service_can_not_be_initialize_alone()
+	public function a_stand_alone_service_can_not_be_initialize()
 	{
         $this->expectException(BindingResolutionException::class);
         $serviceClass = app(Service::class);
-	}
+    }
 }
