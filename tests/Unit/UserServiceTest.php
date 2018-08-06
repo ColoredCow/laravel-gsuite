@@ -9,7 +9,7 @@ use ColoredCow\LaravelGSuite\Test\TestCase;
 
 class UserServiceTest extends TestCase
 {
-    protect $service;
+    protected $service;
 
     public function setUp() {
         parent::setUp();
@@ -19,20 +19,17 @@ class UserServiceTest extends TestCase
 	/** @test */
 	public function it_will_have_a_initialize_google_client()
 	{
-        $userService = app(UserService::class);
-        $this->assertInstanceOf(\Google_Client::class, $userService->getClient());
+        $this->assertInstanceOf(\Google_Client::class, $this->service->getClient());
     }
 
     /** @test */
     public function client_will_have_desired_scopes() {
-        $userService = app(UserService::class);
-        $client = $userService->getClient();
-        $this->assertEquals($client->getScopes(), $userService->getSpecificScopes());
+        $client = $this->service->getClient();
+        $this->assertEquals($client->getScopes(), $this->service->getSpecificScopes());
     }
 
     /** @test */
     public function it_will_have_desired_service() {
-        $userService = app(UserService::class);
-        $this->assertInstanceOf(\Google_Service_Directory::class, $userService->service);
+        $this->assertInstanceOf(\Google_Service_Directory::class, $this->service->service);
     }
 }
