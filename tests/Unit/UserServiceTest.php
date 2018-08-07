@@ -21,4 +21,10 @@ class UserServiceTest extends TestCase
         $client = $this->service->getClient();
         $this->assertEquals($client->getScopes(), $this->service->getServiceSpecificScopes());
     }
+
+    /** @test */
+    public function it_will_have_desired_service()
+    {
+        $this->assertInstanceOf(\Google_Service_Directory::class, $this->service->service);
+    }
 }

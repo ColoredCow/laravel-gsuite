@@ -26,9 +26,4 @@ class ServiceTest extends TestCase
 	{
         $this->assertInstanceOf(\Google_Client::class, $this->service->getClient());
     }
-
-    /** @test */
-    public function it_will_have_desired_service() {
-        $this->assertInstanceOf(\Google_Service_Directory::class, $this->service->service);
-    }
 }
