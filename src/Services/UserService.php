@@ -3,13 +3,13 @@
 namespace ColoredCow\LaravelGSuite\Services;
 
 use Carbon\Carbon;
+use Google_Service_Directory;
 
 class UserService extends Service
 {
 	protected $name;
 	protected $joinedOn;
 	protected $designation;
-
 
 	public function fetch($email)
 	{
@@ -59,8 +59,8 @@ class UserService extends Service
 
 	public function getSpecificScopes() {
 		return[
-			\Google_Service_Directory::ADMIN_DIRECTORY_USER,
-			\Google_Service_Directory::ADMIN_DIRECTORY_USER_READONLY,
+			Google_Service_Directory::ADMIN_DIRECTORY_USER,
+			Google_Service_Directory::ADMIN_DIRECTORY_USER_READONLY,
 		];
 	}
 }

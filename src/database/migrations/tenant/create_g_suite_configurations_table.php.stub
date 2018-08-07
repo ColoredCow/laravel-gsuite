@@ -16,7 +16,7 @@ class CreateGSuiteConfigurationsTable extends Migration
     {
         Schema::create(config('gsuite.tables.tenant.gsuite-configurations'), function (Blueprint $table) {
             $table->increments('id');
-			$table->string('key');
+            $table->string('key');
             $table->string('value');
             $table->timestamps();
         });

@@ -9,7 +9,7 @@ abstract class Service
 {
 	protected $client;
 	public $service;
-	
+
     abstract public function getSpecificScopes();
 
     public function __construct()
