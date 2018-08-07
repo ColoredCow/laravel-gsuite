@@ -19,7 +19,6 @@ class UserServiceTest extends TestCase
     /** @test */
     public function client_will_have_desired_scopes() {
         $client = $this->service->getClient();
-        $this->assertEquals($client->getScopes(), $this->service->getSpecificScopes());
+        $this->assertEquals($client->getScopes(), $this->service->getServiceSpecificScopes());
     }
-    
 }

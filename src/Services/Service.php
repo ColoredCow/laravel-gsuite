@@ -27,7 +27,7 @@ abstract class Service
         $this->client = new Google_Client();
         $this->client->useApplicationDefaultCredentials();
         $this->client->setSubject($this->getImpersonateUser());
-        $this->client->addScope($this->getSpecificScopes());
+        $this->client->addScope($this->getServiceSpecificScopes());
     }
 
     protected function setService() {
