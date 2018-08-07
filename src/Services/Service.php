@@ -17,6 +17,13 @@ abstract class Service
      */
     abstract public function getServiceSpecificScopes(): array;
 
+    /**
+     * Sets the service instance for the Google Service in use.
+     *
+     * @return void
+     */
+    abstract public function setService();
+
     public function __construct()
     {
         $this->setClient();
@@ -28,10 +35,6 @@ abstract class Service
         $this->client->useApplicationDefaultCredentials();
         $this->client->setSubject($this->getImpersonateUser());
         $this->client->addScope($this->getServiceSpecificScopes());
-    }
-
-    protected function setService() {
-        $this->service = new Google_Service_Directory($this->client);
     }
 
     public function getClient()

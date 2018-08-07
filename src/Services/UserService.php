@@ -19,6 +19,11 @@ class UserService extends Service
         ];
     }
 
+    public function setService()
+    {
+        $this->service = new Google_Service_Directory($this->client);
+    }
+
     public function fetch($email)
     {
         $user = $this->service->users->get($email);
