@@ -11,6 +11,14 @@ class UserService extends Service
 	protected $joinedOn;
 	protected $designation;
 
+	public function getServiceSpecificScopes(): array
+	{
+		return [
+			Google_Service_Directory::ADMIN_DIRECTORY_USER,
+			Google_Service_Directory::ADMIN_DIRECTORY_USER_READONLY,
+		];
+	}
+
 	public function fetch($email)
 	{
 		$user = $this->service->users->get($email);
@@ -55,12 +63,5 @@ class UserService extends Service
 	public function getDesignation()
 	{
 		return $this->designation;
-	}
-
-	public function getSpecificScopes() {
-		return[
-			Google_Service_Directory::ADMIN_DIRECTORY_USER,
-			Google_Service_Directory::ADMIN_DIRECTORY_USER_READONLY,
-		];
 	}
 }
