@@ -15,7 +15,9 @@ class TestCase extends OrchestraTestCase
 	 */
 	protected function getPackageProviders($app)
 	{
-		return [GSuiteServiceProvider::class];
+		return [
+			GSuiteServiceProvider::class,
+		];
 	}
 
 	/**
@@ -28,5 +30,20 @@ class TestCase extends OrchestraTestCase
 		return [
 			'GSuiteUserService' => GSuiteUserService::class,
 		];
+	}
+
+	/**
+	 * Set up the environment.
+	 *
+	 * @param \Illuminate\Foundation\Application $app
+	 */
+	protected function getEnvironmentSetUp($app)
+	{
+		$app['config']->set('database.default', 'testbench');
+		$app['config']->set('database.connections.testbench', [
+			'driver' => 'sqlite',
+			'database' => ':memory:',
+			'prefix' => '',
+		]);
 	}
 }
