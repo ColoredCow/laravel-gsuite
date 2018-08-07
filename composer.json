@@ -37,8 +37,11 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ColoredCow\\LaravelGSuite\\Providers\\LaravelGSuiteServiceProvider"
-            ]
+                "ColoredCow\\LaravelGSuite\\Providers\\GSuiteServiceProvider"
+            ],
+            "aliases": {
+                "GSuiteUserService": "ColoredCow\\LaravelGSuite\\Facades\\GSuiteUserService"
+            }
         }
     }
 }

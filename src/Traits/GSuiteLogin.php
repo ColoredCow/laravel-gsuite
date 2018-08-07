@@ -3,9 +3,10 @@
 namespace ColoredCow\LaravelGSuite\Traits;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 
-trait LaravelGSuiteLogin
+trait GSuiteLogin
 {
     protected $redirectTo = '/home';
 
@@ -63,8 +64,7 @@ trait LaravelGSuiteLogin
         return $userModel::create([
             'name' => $socialiteUser->name,
             'email' => $socialiteUser->email,
-            'password' => str_random(12),
-            config('laravel-gsuite.tables.users.avatar') => $socialiteUser->avatar_original,
+            'password' => Hash::make(str_random(12)),
         ]);
     }
 }
