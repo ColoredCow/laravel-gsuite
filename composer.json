@@ -34,6 +34,11 @@
             "ColoredCow\\LaravelGSuite\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "ColoredCow\\LaravelGSuite\\Test\\": "tests/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -43,5 +48,10 @@
                 "GSuiteUserService": "ColoredCow\\LaravelGSuite\\Facades\\GSuiteUserService"
             }
         }
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.0",
+        "phpunit/phpunit": "^7.3",
+        "mockery/mockery": "^1.1"
     }
 }
