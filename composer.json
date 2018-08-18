@@ -4,7 +4,6 @@
     "keywords": ["coloredcow", "gsuite", "socialite", "laravel"],
     "homepage": "https://github.com/coloredcow/laravel-gsuite",
     "license": "MIT",
-    "type": "project",
     "repositories": [
         {
             "type": "vcs",
