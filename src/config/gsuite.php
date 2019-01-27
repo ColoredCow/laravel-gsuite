@@ -8,6 +8,13 @@ return [
 	 * Laravel-GSuite package utilizes domain wide delegation. Make sure you enable that at the time of file creation.
 	 */
 	'application-credentials' => env('GOOGLE_APPLICATION_CREDENTIALS'),
+	
+	
+	/**
+	 * This will used to porovide access to only gsuite User with a specific domain.
+	 */
+
+	'hd' => env('GOOGLE_CLIENT_HD', ''),
 
 	/**
 	 * This must be the super-admin account of your GSuite organization.
