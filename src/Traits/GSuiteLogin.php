@@ -18,7 +18,11 @@ trait GSuiteLogin
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('google')->redirect();
+        $driver = Socialite::driver('google');
+        if (config('gsuite.hd')) {
+            $driver->with(['hd' => config('gsuite.hd')]);
+        }
+        return $driver->redirect();
     }
 
     /**
