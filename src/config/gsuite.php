@@ -11,7 +11,7 @@ return [
 	
 	
 	/**
-	 * This will used to porovide access to only gsuite User with a specific domain.
+	 * This will be used to provide access to only GSuite users within a specific domain.
 	 */
 
 	'hd' => env('GOOGLE_CLIENT_HD', ''),
