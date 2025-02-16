@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "laravel/socialite": "^5.0|^6.0",
+        "laravel/socialite": "^5.0",
         "doctrine/dbal": "^3.6"
     },
     "authors": [
@@ -47,8 +47,8 @@
         }
     },
     "require-dev": {
-        "orchestra/testbench": "^7.0",
-        "phpunit/phpunit": "^9.5|^10.0",
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^10.0",
         "mockery/mockery": "^1.5"
     }
 }
